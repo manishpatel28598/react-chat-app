@@ -1,38 +1,38 @@
-.App {
-  text-align: center;
+.chatbox{
+  border: 2px solid gray;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  background-color: bisque;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+display: flex;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.container.me{
+  flex-direction: row-reverse;
   }
+.me .chatbox{
+  background-color:blueviolet;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btm{
+  position: fixed;
+  width: 100%;
+  bottom: 2px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  flex-direction: row;
+  flex-wrap: wrap;
 
-.App-link {
-  color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btm input{
+  padding: 20px 0;
+  flex-grow: 10;
+  margin-bottom: 2px;
+}
+.btm button{
+  padding: 10px 0;
+  margin-bottom: 2px;
+  flex-grow: 2;
+   background-color: green;
+   border: none;
+   font-size: larger;
 }
