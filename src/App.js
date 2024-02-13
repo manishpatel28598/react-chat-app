@@ -10,9 +10,19 @@ function App() {
 const db = getDatabase();
 const chatListRef = ref(db, 'chats');
 
+const updateHeight = ()=>{
+  const el = document.getElementById('chat')
+  if(el){
+    el.scrollTop = el.scrollHeight
+  }
+}
+
 useEffect(()=>{
   onChildAdded(chatListRef, (data) => {
     setChats(chats=>[...chats, data.val()])
+    setTimeout(()=>{
+      updateHeight();
+    },100)
   });
 },[])
   const sendChat = ()=>{
@@ -30,15 +40,16 @@ set(chatRef, {
       </div>}
       {name?<div>
      <h3>User: {name}</h3>
-     {chats.map((c,i)=><div key={i} className='chat-container'>
-      <div className={`container ${c.name===name ? 'me':'' }`}>
+     <div id='chat' className='chat-container'>
+     {chats.map((c,i)=>( 
+      <div key={i} className={`container ${c.name===name ? 'me':'' }`}>
       <p className='chatbox'>
         <strong>{c.name}: </strong>
-        <span>{c.message}: </span>
+        <span>{c.message} </span>
       </p>
       </div>
-
-     </div>)}
+      ))}
+      </div>
      <div className='btm'>
       <input type="text" onInput={e=>setMsg(e.target.value)} value={msg} placeholder="enter your chat"></input>
       <button onClick={(e)=>sendChat()}>Send</button>
