@@ -11,8 +11,8 @@ const db = getDatabase();
 const chatListRef = ref(db, 'chats');
 
 useEffect(()=>{
-  onChildAdded(chatListRef, (snapshot) => {
-    setChats(chats=>[...chats, snapshot.val()])
+  onChildAdded(chatListRef, (data) => {
+    setChats(chats=>[...chats, data.val()])
   });
 },[])
   const sendChat = ()=>{
@@ -30,7 +30,7 @@ set(chatRef, {
       </div>}
       {name?<div>
      <h3>User: {name}</h3>
-     {chats.map((c)=><div key={c.id} className='chat-container'>
+     {chats.map((c,i)=><div key={i} className='chat-container'>
       <div className={`container ${c.name===name ? 'me':'' }`}>
       <p className='chatbox'>
         <strong>{c.name}: </strong>
@@ -41,7 +41,7 @@ set(chatRef, {
      </div>)}
      <div className='btm'>
       <input type="text" onInput={e=>setMsg(e.target.value)} value={msg} placeholder="enter your chat"></input>
-      <button onClick={e=>sendChat()}>Send</button>
+      <button onClick={(e)=>sendChat()}>Send</button>
      </div>
       </div>:null}
     </div>
