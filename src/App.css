@@ -40,3 +40,11 @@ display: flex;
   overflow-y: scroll;
   /* border: 1px solid black; */
 }
+#btn1{
+  background-color: rgb(77, 77, 239);
+  color: white;
+  padding: 5px;
+  margin: auto;
+  display: flex;
+  justify-content:center;
+}
